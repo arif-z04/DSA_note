@@ -8,7 +8,7 @@ This is my personal note. I tried my best to include everything I learned throug
 # Table of Contents
 - [Intro](#intro)
 - [Complexity Analysis](#complexity-analysis-time--space)
-- [Preliminaries]()
+- [Preliminaries](#preliminaries)
 - [String Processing](#string-processing)
 - [Arrays]()
 - [Pointers]()
@@ -186,6 +186,69 @@ T(n) = 3n² + 5n + 7 → O(n²)
 
 ✔ Essential for competitive programming & interviews
 
+---
+## Preliminaries 
+
+> Chapter 2: `2.3` `Algorithm Notation`
+
+### 2.1 Largest Element in array
+```cpp
+
+#include <iostream>
+using namespace std;
+
+void LargestElementArray(int DATA[], int N){
+    int K = 0, LOC = 0, MAX = DATA[0];
+
+increment_counter:
+    K = K + 1;
+    if(K == N){
+        cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+        return;
+    }
+    if (MAX < DATA[K])
+    {
+        LOC = K;
+        MAX = DATA[K];
+    }
+    goto increment_counter;
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    LargestElementInArray(DATA, N);
+    return 0;
+}
+
+```
+
+Alternate Solution:
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void LargestElementArray(int data[], int n){
+    int mx = data[0];
+    int loc = 0;
+    for(int i = 0; i < n; i++){
+        if(data[i] > mx){
+            mx = data[i];
+            loc = i;
+        }
+    }
+    cout << "LOC = " << loc << ", MAX = " << mx << endl;
+}
+
+int main(){
+    int arr[] = {3, 5, 9, 8};
+    int n = sizeof(arr)/sizeof(int);
+    LargestElementArray(arr, n);
+
+    return 0;
+}
+```
 ---
 
 ## String Processing
