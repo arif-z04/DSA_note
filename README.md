@@ -6,9 +6,9 @@ This is my personal note. I tried my best to include everything I learned throug
 
 ---
 # Table of Contents
-- [Intro](#intro)
-- [Complexity Analysis](#complexity-analysis-time--space)
-- [Preliminaries](#preliminaries)
+- [Intro](#️-intro)
+- [Complexity Analysis](#--complexity-analysis-time--space)
+- [Preliminaries](#️-preliminaries)
 - [String Processing](#string-processing)
 - [Arrays]()
 - [Pointers]()
@@ -20,7 +20,7 @@ This is my personal note. I tried my best to include everything I learned throug
 - [Graphs]()
 
 ---
-## Intro
+## ⛩️ Intro
 
 >A data structure is a particular way of organizing data in a computer so that it can be used effectively. The idea is to reduce the space and time complexities of different tasks. Here are some common data structure:
 - Arrays
@@ -38,7 +38,7 @@ This is my personal note. I tried my best to include everything I learned throug
 ---
 
 
-## Complexity Analysis (Time & Space)
+## ⏰ 💻 Complexity Analysis (Time & Space)
 
 In **computer science**, complexity analysis helps us understand **how efficient an algorithm is** in terms of:
 
@@ -187,13 +187,12 @@ T(n) = 3n² + 5n + 7 → O(n²)
 ✔ Essential for competitive programming & interviews
 
 ---
-## Preliminaries 
+## :spiral_notepad: Preliminaries 
 
-> Chapter 2: `2.3` `Algorithm Notation`
+📌 Chapter 2: `2.3` `Algorithm Notation`
 
 ### 2.1 Largest Element in array
 ```cpp
-
 #include <iostream>
 using namespace std;
 
@@ -246,6 +245,37 @@ int main(){
     int n = sizeof(arr)/sizeof(int);
     LargestElementArray(arr, n);
 
+    return 0;
+}
+```
+---
+### 2.2 Quadratic equation
+
+```cpp
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int A, B, C;
+    cin >> A >> B >> C;
+    int D = B * B - 4 * A * C;
+    if (D > 0)
+    {
+        float X1 = (-B + sqrt(D)) / (2 * A);
+        float X2 = (-B - sqrt(D)) / (2 * A);
+        cout << X1 << " and " << X2 << "\n";
+    }
+    else if (D == 0)
+    {
+        float X = -B / 2 * A;
+        cout << "UNIQUE SOLUTION : " << X << "\n";
+    }
+    else 
+    {
+        cout << "NO REAL SOLUTIONS" << "\n";
+    }
     return 0;
 }
 ```
