@@ -15,8 +15,8 @@ This is my personal note. I tried my best to include everything I learned throug
 - [Linked Lists]()
 - [Stack]()
 - [Queue]()
-- [Recursion]()
-- [Trees]()
+- [Recursion]()     
+- [Trees](#-tree)
 - [Graphs]()
 
 ---
@@ -286,3 +286,29 @@ int main()
 **What is a string?**
 > A finite sequence of characters called a string.  
 
+---
+
+
+## :christmas_tree: Tree 
+
+>A _**tree**_ is a **hierarchical** data structure used to organice and represent data in a **parent-child** relationship. It consists of nodes, where the topmost node is called the **root**, and every other node can have one or more child nodes. 
+
+![Tree](image.png)
+
+🔹 Basic Terminology
+
+Node: Each element in the tree
+
+Root: Topmost node
+
+Edge: Connection between two nodes
+
+Parent / Child: Relationship between nodes
+
+Leaf: Node with no children
+
+Subtree: A tree inside a tree
+
+Height: Longest path from a node to a leaf
+
+Depth: Distance from root to a node
