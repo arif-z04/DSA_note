@@ -1,0 +1,39 @@
+# C++ executables
+*.exe
+*.out
+a.out
+
+# Object files
+*.o
+*.obj
+
+# Build directories
+build/
+bin/
+cmake-build-*/
+
+# IDE files (VS Code)
+.vscode/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*~
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Logs
+*.log
+
+# Compiled libraries
+*.so
+*.dll
+*.dylib
+
+# Dependency directories
+node_modules/  # if any JS is used, but unlikely
+vendor/        # if any
