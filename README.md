@@ -704,8 +704,156 @@ Graph:
 
 ---
 
+## ⭐ Warshall's Algorithm: Transitive Closure
+
+This is an algorithm which gives us a **path matrix** that tells us whether a path exists between every pair of vertices (direct or indirect).
+
+This algorithm -
+* Determines whether a path exists between every pair of vertices
+* Considers direct and indirect paths
+
+### Key Idea:
+For every vertex `k`, check:
+> Can vertex `i` reach vertex `j` through `k`?
+
+If yes, mark it as reachable.
+
+### Formula:
+
+$P[i][j] = P[i][j]\ || \ (\ P[i][j] \And\And \  P[k][j]\ )$
 
 
+### Code:
+
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int mat[n][n];
+
+    // taking input
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cin >> mat[i][j];
+
+            // comment these two following two lines for path matrix
+            // (because we need 0 for logical operations -> binary AND, OR)
+            //   if (mat[i][j] == 0)     // if the value is 0,
+            //     mat[i][j] = (int)1e7; // we set it to a higher value
+        }
+    }
+
+    // warshall's algorithm
+    for (int k = 0; k < n; k++)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                mat[i][j] = mat[i][j] || (mat[i][k] && mat[k][j]); // for path matrix
+            }
+        }
+    }
+
+    // printing matrix
+    cout << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+```
+
+### Complexity
+
+*   Time: O$(V^3)$
+*   Space: O$(V^2)$
+
+### Input & Output
+* **Input:** Adjacency Matrix
+* **Output:** Path Matrix
 
 
+## 🌟 Floyd-Warshall Algorithm
+
+Floyd-Warshall is an algorithm used to find the shortest paths between all pairs of vertices in a graph.
+
+This algorithm -
+* Computes minimum distance from every vertex to every other vertex
+* Works for directed and undirected graphs
+* Can handle negative edge weights
+  * ⚠️ but not negative cycles.
+
+### Core Idea (Same Structure as Warshall)
+
+For every vertex `k`, check:
+> Is the path from `i` to `j` shorter via `k`?
   
+## Formula
+
+$dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j])$
+
+Code: 
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int mat[n][n];
+
+    // taking input
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cin >> mat[i][j];
+
+            // comment these two following two lines for path matrix
+            // (because we need 0 for logical operations -> binary AND, OR)
+            if (mat[i][j] == 0)     // if the value is 0,
+                mat[i][j] = (int)1e7; // we set it to a higher value
+        }
+    }
+
+    // warshall's algorithm
+    for (int k = 0; k < n; k++)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                mat[i][j] = min(mat[i][j], mat[i][k] + mat[k][j]); // shortest paths
+            } 
+        }
+    }
+    
+    // printing matrix
+    cout << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```

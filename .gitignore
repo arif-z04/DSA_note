@@ -15,6 +15,7 @@ cmake-build-*/
 # IDE files (VS Code)
 .vscode/
 *.code-workspace
+.cph
 
 # OS generated files
 .DS_Store
