@@ -11,8 +11,8 @@ This is my personal note. I tried my best to include everything I learned throug
 - [Preliminaries](#️-preliminaries)
 - [String Processing](#string-processing)
 - [Arrays]()
-- [Pointers]()
-- [Linked Lists]()
+- [Pointers](#pointers-g)
+- [Linked Lists](#linked-list)
 - [Stack]()
 - [Queue]()
 - [Recursion]()     
@@ -287,7 +287,110 @@ int main()
 > A finite sequence of characters called a string.  
 
 ---
+## Pointers 👉
 
+A pointer is a variable that stores the memory address of another variable instead of storing a value directly.
+
+In simple word:
+> Pointer = address holder
+
+Pointers allows programs to:
+* Access and modify data efficiently
+* Work with dynamic memory
+* Share data between functions
+* Build advanced data structures
+
+Basic Pointer Syntax:
+
+```c
+int x = 10;
+int *p = &x;
+```
+* `x` - normal variable
+* `&x` - address of `x`
+* `p` - pointer stroing the address of `x`
+* `*p` - value at that address ([dereferencing](https://www.geeksforgeeks.org/cpp/dereference-pointer-in-c/))
+
+### Pointers in Data Structure
+
+In Data Structure, pointers are mainly used to **connect data elements dynamically in memory**. They allow us to create structures whose size can grow or shrink at runtime.
+
+### Pointer based Node Structure
+
+Almost every pointer-based data structure start with a node.
+```c++
+struct Node {
+    int data;
+    Node* next;
+};
+```
+* `data` - stores value
+* `next` - pointer to another node
+
+This is the backbone of many data structures.
+
+### Pointer in Linked Lists
+
+Single Linked Lists:
+```c++
+Node* head = nullptr;
+```
+
+Creating a node dynamically:
+```c++
+Node* newNode = new Node();
+newNode->data = 10;
+newNode->next = nullptr;
+```
+Connecting nodes:
+```
+head = newNode;
+```
+Traversal using pointer:
+```c++
+
+Node* temp = head;
+
+while(temp != nullptr){
+    cout << temp->data << " ";
+    temp = temp->next;
+}
+```
+📌 pointer link nodes together
+
+---
+## Linked List
+
+A linked list is a linear data structure, in which the elements are not stored at contiguous memeory locations. The elements in a linked list are linked using [*pointers*](#pointers-).
+
+### Types of Linked Lists
+
+1. Singly Linked List
+    * Each node points to thte next node
+    * Last node points to `NULL`
+```
+[data | next] → [data | next] → NULL
+```
+2. Doubly Linked List
+    * Each node has two pointers
+      * Previous
+      * Next
+``` 
+NULL ← [prev | data | next] ↔ [prev | data | next] → NULL
+```
+3. Circular Linked List
+   * Last node points back to the first node
+   * No `NULL`
+```
+10 → 20 → 30
+↑         ↓
+←←←←←←←←←←
+
+```
+### Implementations:
+
+
+---
 
 ## :christmas_tree: Tree 
 
@@ -857,3 +960,9 @@ int main()
     return 0;
 }
 ```
+## Linked Representation of a Graph
+
+We will only focus
+
+
+## BFS - Breadth First Search
