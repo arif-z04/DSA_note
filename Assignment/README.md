@@ -1,10 +1,93 @@
 # Assignment 1
-
+---
 
 ## Chapter 2: Preliminaries
 
+### 2.1 Largest Element in array
+
+Used `goto` method here. (not recommended)
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void LargestElementInArray(int DATA[], int N)
+{
+    int K = 0, LOC = 0, MAX = DATA[0];
+increment_counter:
+    K = K + 1;
+    if (K == N)
+    {
+        cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+        return;
+    }
+    if (MAX < DATA[K])
+    {
+        LOC = K;
+        MAX = DATA[K];
+    }
+    goto increment_counter;
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    LargestElementInArray(DATA, N);
+    return 0;
+}
+```
+### 2.2 Quadratic equation
+### 2.3 Largest Element in array (while loop)
+
+### 2.4 Linear Search
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void LinearSearch(int DATA[], int N, int ITEM)
+{
+    int K = 0, LOC = -1;
+    while (LOC == -1 && K < N)
+    {
+        if (ITEM == DATA[K])
+            LOC = K;
+        K = K + 1;
+    }
+    if (LOC == -1)
+        cout << "ITEM is not on the array DATA\n";
+    else
+        cout << LOC << " is the location of ITEM\n";
+    return;
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    int ITEM = 9;
+    LinearSearch(DATA, N, ITEM);
+    return 0;
+}
+```
+
+### Input & Output:
+
+**Input:**
+```cpp
+DATA = {3, 5, 9, 2}
+ITEM = 9
+```
+**Output:**
+```cpp
+2 is the location of ITEM
+```
 
 
+
+
+
+---
 
 ## Chapter 3: String Processing 
 
@@ -133,7 +216,7 @@ pattern_length = 2
 
 ---
 
-### 3.2 Replacement
+### Algorithm: 3.2 Replacement
 
 ```cpp
 #include <bits/stdc++.h>
@@ -234,8 +317,12 @@ for(int i = 0; i < length; i++){
 ```
 > Note: In this algorithm, I used naive pattern matching and manual string deletion and insertion.
 
+--- 
 
-### 3.3 Pattern Matching
+### Algorithm: 3.3 Pattern Matching
+
+Pattern matching is the process of checking whether a given sequence of characters (pattern) is present in a given string or not. The simplest way to do this is to check each substring of the string with the pattern. If the substring matches the pattern, then return the index of the substring in the string. Otherwise, return -1.
+
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -281,3 +368,5 @@ Pattern : "B,"
 ```
 Index is : 14
 ```
+
+---
