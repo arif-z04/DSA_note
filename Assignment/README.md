@@ -233,3 +233,51 @@ for(int i = 0; i < length; i++){
 }
 ```
 > Note: In this algorithm, I used naive pattern matching and manual string deletion and insertion.
+
+
+### 3.3 Pattern Matching
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int patternMatching(string str, int str_len, string pattern, int pattern_len)
+{
+    if (pattern_len > str_len)
+        return -1;
+
+    int k = 0, max = str_len - pattern_len + 1;
+    while (k < max)
+    {
+        for (int l = 0; l < pattern_len; l++)
+        {
+            if (pattern[l] != str[l + k])
+                break;
+            if (l + 1 == pattern_len)
+                return k;
+        }
+        k++;
+    }
+    return -1;
+}
+
+int main()
+{
+    string str = "To be or not 2B, that is the ?";
+    string pattern = "B,";
+    int index = patternMatching(str, str.length(), pattern, pattern.length());
+    cout << "Index is : " << index << endl;
+    return 0;
+}
+```
+
+### Input & Output:
+
+**Input:**
+```
+String  : "To be or not 2B, that is the ?"
+Pattern : "B,"
+```
+**Output:**
+```
+Index is : 14
+```
