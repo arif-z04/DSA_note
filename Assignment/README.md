@@ -37,9 +37,160 @@ int main()
     return 0;
 }
 ```
+
+### Input & Output
+
+**Input**
+```cpp
+{3, 5, 9, 2}
+```
+**Output**
+```
+LOC = 2, MAX = 9
+```
+
+### Explanation
+### Function: `LargestElementInArray()`
+```cpp
+void LargestElementInArray(int DATA[], int N)
+```
+
+**Variables:**
+```cpp
+int K = 0, LOC = 0, MAX = DATA[0];
+```
+- `K` = loop counter (index)
+- `LOC` = location (index) of largest element
+- `MAX` = current largest value
+
+**Use of `goto` statement:**
+```cpp
+increament_counter
+```
+Increament index: `K = K + 1`
+End Condition: `if (K == N)`
+Print Result:
+```cpp
+cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+return;
+```
+
+### Time & Space Complexity
+
+#### ⏱ Time Complexity
+
+O(N) → scans array once
+
+#### 💾 Space Complexity
+
+O(1) → no extra memory
+
+Check on [2.3 Largest Element in array (while loop)](#23-largest-element-in-array-while-loop) for logic flow.
+
+
+
+
+---
 ### 2.2 Quadratic equation
+
+```cpp
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int A, B, C;
+    cin >> A >> B >> C;
+    int D = B * B - 4 * A * C;
+    if (D > 0)
+    {
+        float X1 = (-B + sqrt(D)) / (2 * A);
+        float X2 = (-B - sqrt(D)) / (2 * A);
+        cout << X1 << " and " << X2 << "\n";
+    }
+    else if (D == 0)
+    {
+        float X = -B / (2.0 * A);
+        cout << "UNIQUE SOLUTION : " << X << "\n";
+    }
+    else 
+    {
+        cout << "NO REAL SOLUTIONS" << "\n";
+    }
+    return 0;
+}
+```
+
+### Input & Output
+**Input:**
+```
+1 1 2
+```
+**Output:**
+```
+NO REAL SOLUTIONS
+```
+
+
+**Input**
+```
+1 2 1
+```
+**Output**
+```
+UNIQUE SOLUTION : -1
+```
+
+### Time & Space Complexity
+
+- Time Complexity: O(1)
+- Space Complexity: O(1)
+
+---
+
 ### 2.3 Largest Element in array (while loop)
 
+```cpp
+#include <iostream>
+using namespace std;
+
+void LargestElementInArray(int DATA[], int N)
+{
+    int K = 0, LOC = 0, MAX = DATA[0];
+    while (K < N)
+    {
+        if (MAX < DATA[K])
+        {
+            LOC = K;
+            MAX = DATA[K];
+        }
+        K = K + 1;
+    }
+    cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    LargestElementInArray(DATA, N);
+    return 0;
+}
+```
+
+### Input & Output
+
+**Input**
+```cpp
+{3, 5, 9, 2}
+```
+**Output**
+```
+LOC = 2, MAX = 9
+```
+
+---
 ### 2.4 Linear Search
 ```cpp
 #include <bits/stdc++.h>
@@ -83,9 +234,34 @@ ITEM = 9
 2 is the location of ITEM
 ```
 
+### Explanation:
+### Function: `void LinearSearch()`
+- **Parameters:** `int DATA[], int N, int ITEM`
+- **Purpose:** Search `ITEM` in array `DATA` of size `N`
+
+**Variables:**
+
+```cpp
+int K = 0, LOC = -1
+```
+- `K` : index used to scan the array
+- `LOC` : stores the location of the `ITEM`
+- `LOC = -1` means `ITEM` not found yet.
 
 
+**Loop:**
 
+```cpp
+while (LOC == -1 && K < N)
+{
+    // if current element matches item, stores the location
+    if (ITEM == DATA[K])
+        LOC = K;
+
+    // increament
+    K = K + 1;
+}
+```
 
 ---
 
