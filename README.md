@@ -8,7 +8,7 @@ This is my personal note. I tried my best to include everything I learned throug
 # Table of Contents
 - [Intro](#️-intro)
 - [Complexity Analysis](#--complexity-analysis-time--space)
-- [Preliminaries](#️-preliminaries)
+- [Preliminaries](#preliminaries-️)
 - [String Processing](#string-processing)
 - [Arrays]()
 - [Pointers](#pointers-g)
@@ -187,7 +187,7 @@ T(n) = 3n² + 5n + 7 → O(n²)
 ✔ Essential for competitive programming & interviews
 
 ---
-## :spiral_notepad: Preliminaries 
+## Preliminaries 🗒️
 
 ## 2.2 Mathematical notation and Function
 
