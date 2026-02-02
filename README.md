@@ -189,19 +189,124 @@ T(n) = 3n² + 5n + 7 → O(n²)
 ---
 ## :spiral_notepad: Preliminaries 
 
-📌 Chapter 2: `2.3` `Algorithm Notation`
+## 2.2 Mathematical notation and Function
+
+## Floor and Ceiling Function
+
+## 1. Floor Function
+
+### Symbol:
+
+$$
+\lfloor x \rfloor
+$$
+
+### Definition:
+
+The **floor of a number** (x) is the **greatest integer less than or equal to (x)**.
+
+### Mathematical expression:
+
+$$
+\lfloor x \rfloor = n \quad \text{where } n \in \mathbb{Z} \text{ and } n \le x < n+1
+$$
+
+### Examples:
+$$
+[
+\lfloor 3.7 \rfloor = 3
+]
+[
+\lfloor 5 \rfloor = 5
+]
+[
+\lfloor -2.3 \rfloor = -3
+]
+$$
+📌 **Note:** Floor always goes **downward** toward (-\infty).
+
+---
+
+## 2. Ceiling Function
+
+### Symbol:
+
+$$
+\lceil x \rceil
+$$
+
+### Definition:
+
+The **ceiling of a number** (x) is the **smallest integer greater than or equal to (x)**.
+
+### Mathematical expression:
+
+$$
+\lceil x \rceil = m \quad \text{where } m \in \mathbb{Z} \text{ and } m-1 < x \le m
+$$
+
+### Examples:
+
+$$
+\lceil 3.7 \rceil = 4
+$$
+$$
+\lceil 5 \rceil = 5
+$$
+$$
+\lceil -2.3 \rceil = -2
+$$
+
+📌 **Note:** Ceiling always goes **upward** toward $(+\infty)$.
+
+---
+
+## 3. Combined Property
+
+For any real number (x):
+
+$$
+\lfloor x \rfloor \le x \le \lceil x \rceil
+$$
+
+---
+
+## 4. Visual intuition
+
+If (x = 4.2):
+
+```
+4 -------- x -------- 5
+^                      ^
+floor(x)            ceiling(x)
+```
+
+---
+
+### Quick memory trick 🧠
+
+* **Floor = ground (down)**
+* **Ceiling = roof (up)**
+
+
+
+## 📌 Chapter 2: `2.3` `Algorithm Notation`
 
 ### 2.1 Largest Element in array
+
+Used `goto` method here. (not recommended)
+
 ```cpp
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-void LargestElementArray(int DATA[], int N){
+void LargestElementInArray(int DATA[], int N)
+{
     int K = 0, LOC = 0, MAX = DATA[0];
-
 increment_counter:
     K = K + 1;
-    if(K == N){
+    if (K == N)
+    {
         cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
         return;
     }
@@ -220,34 +325,60 @@ int main()
     LargestElementInArray(DATA, N);
     return 0;
 }
-
 ```
 
-Alternate Solution:
+### Input & Output
+
+**Input**
 ```cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-void LargestElementArray(int data[], int n){
-    int mx = data[0];
-    int loc = 0;
-    for(int i = 0; i < n; i++){
-        if(data[i] > mx){
-            mx = data[i];
-            loc = i;
-        }
-    }
-    cout << "LOC = " << loc << ", MAX = " << mx << endl;
-}
-
-int main(){
-    int arr[] = {3, 5, 9, 8};
-    int n = sizeof(arr)/sizeof(int);
-    LargestElementArray(arr, n);
-
-    return 0;
-}
+{3, 5, 9, 2}
 ```
+**Output**
+```
+LOC = 2, MAX = 9
+```
+
+### Explanation
+### Function: `LargestElementInArray()`
+```cpp
+void LargestElementInArray(int DATA[], int N)
+```
+
+**Variables:**
+```cpp
+int K = 0, LOC = 0, MAX = DATA[0];
+```
+- `K` = loop counter (index)
+- `LOC` = location (index) of largest element
+- `MAX` = current largest value
+
+**Use of `goto` statement:**
+```cpp
+increament_counter
+```
+Increament index: `K = K + 1`
+End Condition: `if (K == N)`
+Print Result:
+```cpp
+cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+return;
+```
+
+### Time & Space Complexity
+
+#### ⏱ Time Complexity
+
+O(N) → scans array once
+
+#### 💾 Space Complexity
+
+O(1) → no extra memory
+
+Check on [2.3 Largest Element in array (while loop)](#23-largest-element-in-array-while-loop) for logic flow.
+
+
+
+
 ---
 ### 2.2 Quadratic equation
 
@@ -269,7 +400,7 @@ int main()
     }
     else if (D == 0)
     {
-        float X = -B / 2 * A;
+        float X = -B / (2.0 * A);
         cout << "UNIQUE SOLUTION : " << X << "\n";
     }
     else 
@@ -279,12 +410,158 @@ int main()
     return 0;
 }
 ```
+
+### Input & Output
+**Input:**
+```
+1 1 2
+```
+**Output:**
+```
+NO REAL SOLUTIONS
+```
+
+
+**Input**
+```
+1 2 1
+```
+**Output**
+```
+UNIQUE SOLUTION : -1
+```
+
+### Time & Space Complexity
+
+- Time Complexity: O(1)
+- Space Complexity: O(1)
+
+---
+
+### 2.3 Largest Element in array (while loop)
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void LargestElementInArray(int DATA[], int N)
+{
+    int K = 0, LOC = 0, MAX = DATA[0];
+    while (K < N)
+    {
+        if (MAX < DATA[K])
+        {
+            LOC = K;
+            MAX = DATA[K];
+        }
+        K = K + 1;
+    }
+    cout << "LOC = " << LOC << ", MAX = " << MAX << "\n";
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    LargestElementInArray(DATA, N);
+    return 0;
+}
+```
+
+### Input & Output
+
+**Input**
+```cpp
+{3, 5, 9, 2}
+```
+**Output**
+```
+LOC = 2, MAX = 9
+```
+
+---
+### 2.4 Linear Search
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void LinearSearch(int DATA[], int N, int ITEM)
+{
+    int K = 0, LOC = -1;
+    while (LOC == -1 && K < N)
+    {
+        if (ITEM == DATA[K])
+            LOC = K;
+        K = K + 1;
+    }
+    if (LOC == -1)
+        cout << "ITEM is not on the array DATA\n";
+    else
+        cout << LOC << " is the location of ITEM\n";
+    return;
+}
+
+int main()
+{
+    int DATA[] = {3, 5, 9, 2};
+    int N = sizeof(DATA) / sizeof(int);
+    int ITEM = 9;
+    LinearSearch(DATA, N, ITEM);
+    return 0;
+}
+```
+
+### Input & Output:
+
+**Input:**
+```cpp
+DATA = {3, 5, 9, 2}
+ITEM = 9
+```
+**Output:**
+```cpp
+2 is the location of ITEM
+```
+
+### Explanation:
+### Function: `void LinearSearch()`
+- **Parameters:** `int DATA[], int N, int ITEM`
+- **Purpose:** Search `ITEM` in array `DATA` of size `N`
+
+**Variables:**
+
+```cpp
+int K = 0, LOC = -1
+```
+- `K` : index used to scan the array
+- `LOC` : stores the location of the `ITEM`
+- `LOC = -1` means `ITEM` not found yet.
+
+
+**Loop:**
+
+```cpp
+while (LOC == -1 && K < N)
+{
+    // if current element matches item, stores the location
+    if (ITEM == DATA[K])
+        LOC = K;
+
+    // increament
+    K = K + 1;
+}
+```
 ---
 
 ## String Processing
 
 **What is a string?**
-> A finite sequence of characters called a string.  
+> A finite sequence of characters called a string. 
+
+> The number of characters is called the _empty string_ or the _null string_.
+
+> 
+
 
 ---
 ## Pointers 👉
