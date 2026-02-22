@@ -1,5 +1,9 @@
 # Assignement 2
 
+> _Author: S M Arifuzzaman_ 
+> 
+> _ID: 2302054_
+
 ## Chapter - 4: Array, Records and Pointers
 
 ## 4.1 Traversing
@@ -58,6 +62,8 @@ int main() {
 ---
 
 ## 4.2 Insertion into an array
+
+Algorithm
 
 ```Fortran
 (Inserting into a Linear Array) INSERT(LA, N, K, ITEM)
