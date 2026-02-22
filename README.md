@@ -558,9 +558,9 @@ while (LOC == -1 && K < N)
 **What is a string?**
 > A finite sequence of characters called a string. 
 
-> The number of characters is called the _empty string_ or the _null string_.
+> The number of characters of the string is called _length_.
 
-> 
+>  
 
 
 ---
