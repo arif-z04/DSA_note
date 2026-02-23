@@ -117,3 +117,187 @@ int main() {
     printArray(arr, n);
 }
 ```
+---
+
+## 4.3 Delation in arrays
+
+Algorithm:
+```nginx
+(Deleting from a Linear Array) DELETE(LA, N, K, ITEM)
+Here LA is a linear array with N elements and K is a positive 
+integer such that K <= N. This algorithm inserts an element ITEM
+into the Kth position in LA.
+
+1. Set J := N
+2. Repeat Steps for J = K to N - 1:
+        Set LA[J] := LA[J+1]
+3. Set N := N - 1
+4. Exit
+```
+Code:
+```C++
+#include <iostream>
+using namespace std;
+
+int deleteElement(int arr[], int n, int k) {
+    // int item = arr[k]; // for processing     
+    for (int j=k; j < n-1; j++) {
+        arr[j] = arr[j+1];
+    }
+    return n - 1;
+}
+
+void printArray(int arr[], int n) {
+    for (int i=0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[50] = {1, 2, 3, 4, 5};
+    int n = 5; // number of elements in the array
+    int k = 2; // position to deleteElement a new value
+
+    n = deleteElement(arr, n, k - 1);
+    printArray(arr, n);
+}
+```
+---
+
+## 4.4 Bubble Sort
+
+Algorithm:
+```Fortran
+BUBBLE(DATA, N)
+1. Repeat Steps 2 and 3 for K = 1 to N - 1
+2.      Set PTR := 1
+3.      Repeat while PTR <= N - K:
+            (a) If DATA[PTR] > DATA[PTR + 1] then
+                    swap DATA[PTR] and DATA[PTR + 1]
+            (b) Set PTR := PTR + 1
+4. Exit
+```
+Code:
+```C++
+#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b) {
+    int temp = *b;
+    *b = *a;
+    *a = temp;
+}
+
+void bubbleSort(int *arr, int n) {
+    for (int i=0; i< n; i++) {
+        for (int j=0; j < n-i; j++) {
+            if (arr[j] > arr[j+1]) {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+void printArray(int *arr, int n) {
+    for (int i=0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {12, 2, 39, -4, 25};
+    bubbleSort(arr, sizeof(arr)/sizeof(int));
+    printArray(arr, sizeof(arr)/sizeof(int));
+}
+```
+---
+
+## 4.5 Linear Search 
+
+Code:
+```C++
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int item) {
+    for (int i=0; i < n; i++) {
+        if (arr[i] == item) {
+            return i;
+        }
+    } // While loop? Try yourself!
+    return -1;
+}
+
+int main() {
+    int arr[] = {12, 2, 39, -4, 25};
+    int item = 39;
+    cout << linearSearch(arr, sizeof(arr)/sizeof(int), item) << endl;
+}
+```
+---
+
+## 4.6 Binary Search
+
+Code:
+```C++
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int n, int item) {
+    int lower_bound = 0;
+    int upper_bound = n - 1;
+    while (lower_bound <= upper_bound) {
+        int mid = (lower_bound + upper_bound) / 2;
+        if (arr[mid] == item) {
+            return mid;
+        } else if (arr[mid] < item) {
+            lower_bound = mid + 1;
+        } else {
+            upper_bound = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {12, 2, 39, -4, 25};
+    int item = 39;
+    cout << binarySearch(arr, sizeof(arr)/sizeof(int), item) << endl;
+}
+```
+---
+
+## 4.7 Matrix Multiplication
+
+Code:
+```C++
+#include <iostream>
+using namespace std;
+
+void matrixMultiplication(int matrix_a[][3], int matrix_b[][3], int M, int P, int N) {
+    int matrix_c[M][N];
+    for (int i=0; i < M; i++) {
+        for (int j=0; j < N; j++) {
+            matrix_c[i][j] = 0;
+            for (int k=0; k < P; k++) {
+                matrix_c[i][j] += matrix_a[i][k] * matrix_b[k][j];
+            }
+        }
+    }
+    for (int i=0; i < M; i++) {
+        for (int j=0; j < N; j++) {
+            cout << matrix_c[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int matrix_a[][3] = {{1, -2, 3}, {0, 4, 5}}; // M x P
+    int matrix_b[][3] = {{3, 0, -6}, {2, -3, 1}, {2, 5, 3}}; // P x N
+
+    matrixMultiplication(matrix_a, matrix_b, 2, 3, 3);
+}
+```
