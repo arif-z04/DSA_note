@@ -13,6 +13,12 @@ int linearSearch(int arr[], int n, int item){
 int main(){
     int arr[] = {12, 2, 39, -4, 25};
     int item = 39;
+
+    for(int i:arr) cout << i << " ";
+
+    cout << endl;
+    cout << "Item: " << item << endl;
+    cout << "Index: ";
     cout << linearSearch(arr, sizeof(arr)/sizeof(int), item) << endl;
     
     return 0;

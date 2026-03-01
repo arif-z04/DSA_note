@@ -3,6 +3,9 @@ using namespace std;
 
 void matrixMultiplication(int matrix_a[][3], int matrix_b[][3], int M, int P, int N) {
     int matrix_c[M][N];
+
+    // o(n3)+*
+    
     for (int i=0; i < M; i++) {
         for (int j=0; j < N; j++) {
             matrix_c[i][j] = 0;

@@ -8,23 +8,7 @@ Scrum organizes the project into **roles, events, and artifacts**:
 
 #### **1. Scrum Roles**
 
-| Role                   | Responsibility                                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Product Owner (PO)** | Defines requirements, maintains the **Product Backlog**, and prioritizes features based on business value. |
-| **Scrum Master (SM)**  | Facilitates Scrum practices, removes impediments, ensures the team follows Agile principles.               |
-| **Development Team**   | Cross-functional team that builds the product incrementally; self-organizing.                              |
 
----
-
-#### **2. Scrum Events (Process Flow)**
-
-1. **Product Backlog Creation**
-
-   * The Product Owner lists all requirements/features as **user stories**.
-2. **Sprint Planning**
-
-   * Team selects high-priority backlog items to complete in the next sprint (usually 1–4 weeks).
-3. **Sprint Execution**
 
    * Team develops, tests, and integrates features iteratively. Daily **Scrum meetings** track progress.
 4. **Daily Scrum (Stand-up)**

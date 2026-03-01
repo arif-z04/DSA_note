@@ -27,6 +27,9 @@ int main(){
     int n = 5;
     int k = 2;
 
+    cout << "Array before deletion: " << endl;
+    printArray(arr, n);
     n = deleteElement(arr, n, k - 1);
+    cout << "Array after deletion: " << endl;
     printArray(arr, n);
 }
