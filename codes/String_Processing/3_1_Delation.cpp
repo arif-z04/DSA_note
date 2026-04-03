@@ -43,5 +43,7 @@ int main(){
         str = erase(str, index, pattern.length());
         index = searchPattern(str, pattern);
     }
+
+    cout << str << endl;
     return 0;
 }

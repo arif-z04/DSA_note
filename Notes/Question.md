@@ -694,5 +694,88 @@ Control structures are essential for:
 
 ---
 
+According to **Schaum's Outline of Data Structures** by Seymour Lipschutz**, algorithms are written in clear step-by-step form using algorithmic notation.
+
+Below is the algorithm for solving a **Quadratic Equation**.
+
+---
+
+# 14. Algorithm for Solving a Quadratic Equation
+
+### ✅ Problem
+
+Solve the quadratic equation:
+
+[
+ax^2 + bx + c = 0
+]
+
+---
+
+### ✅ Formula Used
+
+[
+D = b^2 - 4ac
+]
+
+[
+x = \frac{-b \pm \sqrt{D}}{2a}
+]
+
+Where:
+
+* ( D ) = Discriminant
+
+---
+
+## ✅ Algorithm: QUADRATIC
+```
+1. Start
+2. Read A, B, C
+3. If A = 0
+  Print "Not a quadratic equation"
+  Exit
+4. Compute D = B*B - 4*A*C
+5. 
+    If D > 0, then
+        Compute
+        x1 = (-b + √D) / (2a)
+        x2 = (-b - √D) / (2a)
+        Print x1, x2
+
+    Else if D = 0
+        Compute
+        x = -b / (2a)
+        Print "Two equal real roots", x
+    
+    Else:
+        Print "No real solution."
+
+6. Exit
+```
+---
+
+## ✅ Explanation of Cases
+
+| Discriminant (D) | Nature of Roots               |
+| ---------------- | ----------------------------- |
+| D > 0            | Two real and distinct roots   |
+| D = 0            | Two equal real roots          |
+| D < 0            | Two complex (imaginary) roots |
+
+---
+
+## ✅ Time Complexity
+
+The algorithm performs a fixed number of operations.
+Therefore, its time complexity is:
+
+$$
+O(1)
+$$
+
+---
+
+## Chapter 3
 
 

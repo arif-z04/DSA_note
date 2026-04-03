@@ -5,6 +5,8 @@ is_executable() {
     file "$1" | grep -q "ELF.*executable"
 }
 
+echo "Starting cleanup process..."
+
 # Find all files in the repository (excluding .git and build directories)
 find . -type f -not -path './.git/*' -not -path './build/*' | while read -r file; do
     # Check if the file is an ELF executable
@@ -20,3 +22,14 @@ find . -type f -not -path './.git/*' -not -path './build/*' | while read -r file
 done
 
 echo "Executable files have been moved to their respective build/ directories."
+
+# Find and remove all /build folders in the current directory and subdirectories
+find . -type d -name "build" -exec rm -rf {} + 2>/dev/null
+
+if [ $? -eq 0 ]; then
+    echo "Removed all build folders"
+else
+    echo "Build folders not found"
+fi
+
+echo "Cleanup process completed."
