@@ -92,7 +92,38 @@ public:
         delete temp;
     }
 
+    void pop_back(){
+        if(head == NULL) return;
 
+        if(head->link == NULL){
+            delete head;
+            head = NULL;
+            return;
+        }
+
+
+        Node* temp = head;
+        while(temp->link->link != NULL){
+            temp = temp->link;
+        }
+
+        delete temp->link;
+        temp->link = NULL;
+    }
+
+    void deleteFromPosition(int pos){
+        if(head == NULL) return;
+
+        if(pos == 1){
+            pop_front();
+        }
+
+        Node* temp = head;
+
+        for(int i = 1; i < pos - 1 && temp->link != NULL; i++){
+            temp = temp->link;
+        }
+    }
 
     void display(){
         Node *temp = head;
@@ -119,6 +150,19 @@ public:
     }
 
 
+    void reverse(){
+        Node* prev = NULL;
+        Node* curr = head;
+        Node* next;
+
+        while(curr != NULL){
+            next = curr->link;
+            curr->link = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
 };
 
 
