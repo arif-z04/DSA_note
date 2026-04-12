@@ -7,17 +7,16 @@ public:
     int data;
     Node* link;
 
-    int id;
-    static int counter;
+    // int id;
+    // static int counter;
 
     Node(int value){
         data = value;
         link = NULL;
 
-        id = ++counter;
+        // id = ++counter;
     }
 };
-
 
 class LinkedList
 {
@@ -66,7 +65,6 @@ public:
         newNode->link = temp->link;
         temp->link = newNode;
     }
-
     // Search element
     void search(int item){
         Node *temp = head;
@@ -84,15 +82,12 @@ public:
         cout << "Not found\n";
     }
 
-
     void pop_front(){
         if(head == NULL) return;
         Node* temp = head;
         head = head->link;
         delete temp;
     }
-
-
 
     void display(){
         Node *temp = head;
@@ -103,7 +98,6 @@ public:
 
         cout << "NULL\n";
     }
-
     // display with address
     void displayWithAddress()
     {
@@ -120,9 +114,6 @@ public:
 
 
 };
-
-
-
 
 int main(){
 
