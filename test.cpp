@@ -1,17 +1,31 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+class Node{
+public:
+    int data;
+    Node* link;
+    Node(int value){
+        data = value;
+        link = NULL;
+    }
+};
+
+class LinkedList{
+public:
+    Node* head;
+    LinkedList(){
+        head = NULL;
+    }
+    
+    void push_front(int value){
+        Node* newNode = new Node(value);
+        newNode->link = head;
+        head = newNode;
+    }
+};
 
 int main()
 {
-    int i, j, x = 0;
-    for(int i = 1; i <= 5; i++){
-        for(int j = 1; j <= 5; j++){
-            cin >> x;
-            if(x){
-                cout << abs(i - 3) + abs(j - 3) << endl;
-            }
-        }
-    }
-    return 0;
+    
 }
