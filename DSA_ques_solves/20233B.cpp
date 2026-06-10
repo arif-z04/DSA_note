@@ -1,64 +1,26 @@
-// o(n log n)
-
 #include <bits/stdc++.h>
 using namespace std;
 
-void merge(int *arr, int left, int mid, int right){
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+void hanoi_stack(int n, char beg, char aux, char end) {
+    stack<pair<int, vector<char>>> st;
+    st.push({n, {beg, aux, end}});
 
-    int L[n1], R[n2];
-
-
-    for(int i = 0; i < n1; i++){
-        L[i] = arr[left + i];
-    }
-
-    for(int j = 0; j < n2; j++){
-        R[j] = arr[mid + 1 + j];
-    }
-
-
-    int i = 0, j = 0, k = left;
-
-    while(i < n1 && j < n2){
-        if(L[i] <= R[j]){
-            arr[k++] = L[i++];
+    while (!st.empty()) {
+        int n = st.top().first;
+        char beg = st.top().second[0];
+        char aux = st.top().second[1];
+        char end = st.top().second[2];
+        st.pop();
+        if (n == 1) {
+            cout << beg << " -> " << end << endl;
         } else {
-            arr[k++] = R[j++];
+            st.push({n-1, {aux, beg, end}});
+            st.push({1, {beg, aux, end}});
+            st.push({n-1, {beg, end, aux}});
         }
     }
-
-    while(i < n1){
-        arr[k++] = L[i++];
-    }
-    while(j < n2){
-        arr[k++] = R[j++];
-    }
 }
-
-void mergeSort(int *arr, int left, int right){
-    if(left < right){
-        int mid = left + (right - left) / 2;
-
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-
-        merge(arr, left, mid, right);
-    }
-}
-
 
 int main() {
-    int arr[] = {12, 11, 13, 5, 6, 7};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    mergeSort(arr, 0, n - 1);
-
-    cout << "Sorted array: ";
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-
-    cout << endl;
-    return 0;
+    hanoi_stack(4, 'A', 'B', 'C');
 }
