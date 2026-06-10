@@ -1,119 +1,151 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node{
+template <typename T>
+class Node
+{
 public:
-    int data;
-    Node* link;
+    T data;
+    Node<T> *next;
 
-    // int id;
-    // static int counter;
-
-    Node(int value){
+    Node(T value)
+    {
         data = value;
-        link = NULL;
-
-        // id = ++counter;
+        next = nullptr;
     }
 };
 
+template <typename T>
 class LinkedList
 {
 private:
-    Node *head;
+    Node<T> *head;
 
-public: 
-    LinkedList(){
-        head = NULL;
+public:
+    LinkedList()
+    {
+        head = nullptr;
     }
-    void push_front(int value){
-        Node *newNode = new Node(value);
-        newNode->link = head;
+
+    void insertFront(T value)
+    {
+        Node<T> *newNode = new Node<T>(value);
+        newNode->next = head;
         head = newNode;
     }
-    void push_back(int value){
-        Node *newNode = new Node(value);
-        if(head == NULL){
+
+    void insertBack(T value)
+    {
+        Node<T> *newNode = new Node<T>(value);
+
+        if (head == nullptr)
+        {
             head = newNode;
             return;
         }
-        Node *temp = head;
-        while(temp->link != NULL){
-            temp = temp->link;
+
+        Node<T> *temp = head;
+
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
         }
-        temp->link = newNode;
+
+        temp->next = newNode;
     }
-    // Insert at position 1-based
-    void insertAtPosition(int value, int pos){
-        if(pos == 1){
-            push_front(value);
-            return;
-        }
-        Node *newNode = new Node(value);
-        Node *temp = head;
 
-        for(int i = 1; i < pos - 1 && temp != NULL; i++){
-            temp = temp->link;
-        }
-
-        if(temp == NULL){
-            cout << "Position out of range\n";
+    void deleteValue(T value)
+    {
+        if (head == nullptr)
+        {
             return;
         }
 
-        newNode->link = temp->link;
-        temp->link = newNode;
-    }
-    // Search element
-    void search(int item){
-        Node *temp = head;
-        int pos = 1;
+        if (head->data == value)
+        {
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
 
-        while(temp != NULL){
-            if(temp->data == item){
-                cout << "Found at position: " << pos << endl;
+        Node<T> *current = head;
+        while (current->next != nullptr & current->next->data != value)
+        {
+            current = current->next;
+
+            if (current->next != nullptr)
+            {
+                Node<T> *temp = current->next;
+                current->next = temp->next;
+                delete temp;
+            }
+        }
+    }
+
+    void search(T value)
+    {
+        Node<T> *temp = head;
+        while (temp != nullptr)
+        {
+            if (temp->data == value)
+            {
+                cout << "Found! Data:" << value << endl;
                 return;
             }
-            temp = temp->link;
-            pos++;
         }
 
-        cout << "Not found\n";
+        cout << "Not found" << endl;
     }
 
-    void pop_front(){
-        if(head == NULL) return;
-        Node* temp = head;
-        head = head->link;
-        delete temp;
-    }
-
-    void display(){
-        Node *temp = head;
-        while(temp != NULL){
-            cout << temp->data << " -> ";
-            temp = temp->link;
-        }
-
-        cout << "NULL\n";
-    }
-    // display with address
-    void displayWithAddress()
+    // Display
+    void display()
     {
-        Node *temp = head;
+        Node<T> *temp = head;
 
-        while (temp != NULL)
+        while (temp != nullptr)
         {
-
-            cout << "[" << temp->data << " | " << (long long)temp % 10000 << "] -> ";
-            temp = temp->link;
+            cout << temp->data << " -> ";
+            temp = temp->next;
         }
+
         cout << "NULL\n";
     }
 
+void displayWithAddress()
+{
+    Node<T> *temp = head;
 
+    while (temp != NULL)
+    {
+
+        cout << "[" << temp->data << " | " << (long long)temp % 10000 << "] -> ";
+        temp = temp->next;
+    }
+    cout << "NULL\n";
+}
+
+    // Destructor
+    ~LinkedList()
+    {
+        Node<T> *current = head;
+
+        while (current != nullptr)
+        {
+            Node<T> *nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
+    }
 };
 
-int main(){
+int main()
+{
+    LinkedList<int> list;
 
+    list.insertBack(10);
+    list.insertBack(20);
+    list.insertBack(30);
+
+    list.displayWithAddress();
 }
