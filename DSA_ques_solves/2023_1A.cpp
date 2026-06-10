@@ -14,8 +14,6 @@ public:
     }
 };
 
-
-
 template <typename T>
 class SortedLinkedList
 {
