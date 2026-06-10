@@ -5,7 +5,7 @@
 using namespace std;
 
 template<typename T>
-class Queue{
+class Queue{    
 private:
     T* arr;
     int front;
@@ -77,6 +77,8 @@ public:
         cout << endl;
     }
 };
+
+
 int main()
 {
     int n;
