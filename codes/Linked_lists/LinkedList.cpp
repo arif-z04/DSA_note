@@ -46,6 +46,24 @@ public:
         temp->next = newNode;
     }
 
+    void insertAtPosition(int pos, T value) {
+        if (pos == 1) {
+            insertFront(value);
+            return;
+        }
+
+        Node<T>* newNode = new Node<T>(value);
+        Node<T>* temp = head;
+
+        for (int i = 1; i < pos - 1 && temp; i++) {
+            temp = temp->next;
+        }
+
+        if (!temp) return;
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
     // Insert after Nth node (1-based index)
     void insertAfterPosition(int pos, T value) {
         Node<T>* temp = head;
