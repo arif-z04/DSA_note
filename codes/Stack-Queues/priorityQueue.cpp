@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template<typename T>
 class PriorityQueue {
-    vector<int> heap;
+private:
+    vector<T> heap;
 
-    // Move element up (heapify up)
     void heapifyUp(int index) {
         while (index > 0) {
             int parent = (index - 1) / 2;
@@ -18,7 +19,6 @@ class PriorityQueue {
         }
     }
 
-    // Move element down (heapify down)
     void heapifyDown(int index) {
         int n = heap.size();
 
@@ -43,63 +43,63 @@ class PriorityQueue {
     }
 
 public:
-    // Insert element
-    void push(int val) {
-        heap.push_back(val);
+    void push(T value) {
+        heap.push_back(value);
         heapifyUp(heap.size() - 1);
     }
 
-    // Get max element
-    int top() {
-        if (heap.empty()) {
-            cout << "Queue is empty!\n";
-            return -1;
-        }
-        return heap[0];
-    }
-
-    // Remove max element
     void pop() {
         if (heap.empty()) {
-            cout << "Queue is empty!\n";
+            cout << "Priority Queue is empty!\n";
             return;
         }
 
         heap[0] = heap.back();
         heap.pop_back();
-        heapifyDown(0);
+
+        if (!heap.empty())
+            heapifyDown(0);
+    }
+
+    T top() {
+        if (heap.empty())
+            throw runtime_error("Priority Queue is empty!");
+
+        return heap[0];
     }
 
     bool empty() {
         return heap.empty();
     }
 
+    int size() {
+        return heap.size();
+    }
+
     void display() {
-        for (int x : heap)
+        for (T x : heap)
             cout << x << " ";
         cout << endl;
     }
 };
 
 int main() {
-    PriorityQueue pq;
+    PriorityQueue<int> pq;
 
     pq.push(10);
-    pq.push(30);
+    pq.push(50);
     pq.push(20);
-    pq.push(5);
     pq.push(40);
 
-    cout << "Heap elements: ";
+    cout << "Heap: ";
     pq.display();
 
-    cout << "Top element: " << pq.top() << endl;
+    cout << "Top: " << pq.top() << endl;
 
     pq.pop();
-    cout << "After pop: ";
-    pq.display();
 
-    cout << "New top: " << pq.top() << endl;
+    cout << "After Pop: ";
+    pq.display();
 
     return 0;
 }
